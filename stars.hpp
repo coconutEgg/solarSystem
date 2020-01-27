@@ -1,6 +1,7 @@
 #ifndef _SOLARSYSTEM_H_
 #define _SOLARSYSTEM_H_
 #include <GL/glut.h>
+#include <cstring>
 
 class Star
 {
@@ -20,22 +21,16 @@ public:
     //parent star
     Star *parentStar;
 
-    //general constructor
-    Star(const GLfloat radius = 10, const GLfloat distance = 10,
-         const GLfloat speed = 10, const GLfloat selfSpeed = 10,
-         Star *parentStar = NULL) : radius(radius), distance(distance),
-                                    speed(speed), selfSpeed(selfSpeed),
-                                    parentStar(parentStar){};
-
-    //--copy construct
-
-    //--copy assignment
+    Star(GLfloat radius, GLfloat distance, 
+        GLfloat speed, GLfloat selfSpeed,
+        Star *parentStar);
 
     //the function to draw for general stars
     void drawStar();
     //set drawStar() as the default function
     virtual void draw() { drawStar(); };
 
+    virtual void update( long timeSpan);
 protected:
     GLfloat alphaSelf, alpha;
 };
@@ -43,17 +38,9 @@ protected:
 class Planet : public Star
 {
 public:
-    //general constructor
-    Planet(const GLfloat radius = 10, const GLfloat distance = 10,
-           const GLfloat speed = 10, const GLfloat selfSpeed = 10,
-           Star *parentStar = NULL, const GLfloat rgbColor[3] = {0})
-        : Star(radius, distance, speed, selfSpeed, parentStar)
-    {
-        //deal with rgbColor
-    }
-    //--copy constructor
-
-    //--copy assignment
+    Planet(GLfloat radius, GLfloat distance, 
+        GLfloat speed, GLfloat selfSpeed,
+        Star *parentStar, GLfloat rgbColor[3]);
 
     //define the function to draw a planet
     void drawPlanet();
@@ -69,19 +56,17 @@ public:
 class LightPlanet : public Planet
 {
 public:
-    LightPlanet(const GLfloat radius = 10, const GLfloat distance = 10,
-                const GLfloat speed = 10, const GLfloat selfSpeed = 10,
-                Star *parentStar = NULL, const GLfloat rgbColor[] = {0})
-                {
-                    this->radius = radius;
-                    this->distance = distance;
-                    this->speed = speed;
-                    this->selfSpeed = selfSpeed;
-                    this->parentStar = parentStar;
-                    //deal with the rgbColor
-                }
+    LightPlanet(GLfloat radius, GLfloat distance, 
+        GLfloat speed, GLfloat selfSpeed,
+        Star *parentStar, GLfloat rgbColor[]);
+
     void drawLight();
-    virtual void draw(){drawLight(); drawPlanet(); drawStar();};
+    virtual void draw()
+    {
+        drawLight();
+        drawPlanet();
+        drawStar();
+    };
 };
 
 #endif
