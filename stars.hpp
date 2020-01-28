@@ -26,8 +26,8 @@ public:
     //parent star
     Star *parentStar;
 
-    Star(GLfloat radius, GLfloat distance, 
-        GLfloat speed, GLfloat selfSpeed,
+    Star(const GLfloat &radius, const GLfloat &distance, 
+        const GLfloat &speed, const GLfloat &selfSpeed,
         Star *parentStar):parentStar(parentStar),
         radius(radius), speed(speed), selfSpeed(selfSpeed),
         distance(distance)
@@ -60,8 +60,8 @@ protected:
 class Planet : public Star
 {
 public:
-    Planet(GLfloat radius, GLfloat distance, 
-        GLfloat speed, GLfloat selfSpeed,
+    Planet(const GLfloat& radius, const GLfloat& distance, 
+        const GLfloat& speed, const GLfloat& selfSpeed,
         Star *parentStar, GLfloat rgbColor[3]):
         Star(radius, distance, speed, selfSpeed, parentStar)
         {
@@ -87,8 +87,8 @@ public:
 class LightPlanet : public Planet
 {
 public:
-    LightPlanet(GLfloat radius, GLfloat distance, 
-        GLfloat speed, GLfloat selfSpeed,
+    LightPlanet(const GLfloat &radius, const GLfloat & distance, 
+        const GLfloat &speed, const GLfloat &selfSpeed,
         Star *parentStar, GLfloat rgbColor[3]):
         Planet(radius, distance, speed, selfSpeed, parentStar, rgbColor)
         {};

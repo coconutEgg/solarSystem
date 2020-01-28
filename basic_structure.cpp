@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
     -between-single-bufferedglut-single-and-double-buffered-drawingglut
     //GLUT_SINGLE buffer : directly displayed on the screen, low efficiency
     //GLUT_DOUBLE buffer : swap between two buffers, hight efficiency
+    //GLUT_DOUBLE buffer can be seperated into foreground buffer and background buffer;
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);
 
     //@---init the initial position of the window
