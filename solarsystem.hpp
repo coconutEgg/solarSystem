@@ -7,11 +7,15 @@
 #define TIMEPAST 1
 #define SELFROTATE 3
 
+#define REST 700
+#define REST_Y (-REST)
+#define REST_Z (REST)
+
 enum STARS
 {
     Sun,
     Mercury,
-    Venuth,
+    Venus,
     Earth,
     Moon,
     Mars,
@@ -34,11 +38,9 @@ class SolarSystem
     private:
     Star *stars[STARS_NUM];
 
-    //views: we need at least 9 parameters
-    GLdouble viewx, viewY, viewZ;
-    GLdouble centerX, centerY, centerZ;
-    GLdouble upX, upY, upZ;
-
+    GLdouble viewX, viewY, viewZ;       //相当于头的坐标位置;
+    GLdouble centerX, centerY, centerZ; //相当于物体的坐标位置;
+    GLdouble upX, upY, upZ;             //相当于头顶朝上的方向向量
 };
 
 
